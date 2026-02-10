@@ -25,15 +25,31 @@ function EpisodeList() {
     );
   } 
 
-  return (
-    <>
-      <header>
-        <h1>Dark Echoes</h1>
-      </header>
-      <main>
-        <EpisodeList />
-        <EpisodeDetails />
-      </main>
-    </>
-  );
+function EpisodeDetails() {
+  if (!selectedEpisode) {
+    return (
+      <section className="details"> 
+      <p>Select an episode for details to show</p>
+      </section>
+    );
+  }
+ return (
+  <section className="details">
+    <h2>{selectedEpisode.title}</h2>
+    <p>{selectedEpisode.description}</p>
+  </section>
+ );
+}
+
+return (
+  <>
+  <header>
+    <h1>Dark Echoes</h1>
+  </header>
+  <main>
+    <EpisodeList />
+    <EpisodeDetails />
+  </main>
+  </>
+);
 }
