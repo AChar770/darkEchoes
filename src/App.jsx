@@ -23,7 +23,7 @@ function EpisodeList() {
         </ol>
       </section>
     );
-  }
+  } 
 
   return (
     <>
