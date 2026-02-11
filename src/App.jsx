@@ -4,52 +4,50 @@ import { episodeList } from "./data";
 export default function App() {
   const [selectedEpisode, setSelectedEpisode] = useState(null);
 
-
-const listItems = episodeList.map(episode =>
-return <ul>{#epTitle}</ul>
-
-function EpisodeList() {
-  return (
-    <section className="episodes">
+  function EpisodeList() {
+    return (
+      <section className="episodes">
         <h2>List of Episodes</h2>
         <ol>
-          {episodes.map((episode) => (
-            <li>
+          {episodeList.map((episode) => (
+            <li
               key={episode.id}
               onClick={() => setSelectedEpisode(episode)}
-              className={selectedEpisode?.id === episode.id ? "selected" : ""}{episode.epTitle}
+              className={selectedEpisode?.id === episode.id ? "selected" : ""}
+            >
+              {episode.title}
             </li>
           ))}
         </ol>
       </section>
     );
-  } 
+  }
 
-function EpisodeDetails() {
-  if (!selectedEpisode) {
+  function EpisodeDetails() {
+    if (!selectedEpisode) {
+      return (
+        <section className="details">
+          <p><em>Select an episode for details to show</em></p>
+        </section>
+      );
+    }
     return (
-      <section className="details"> 
-      <p>Select an episode for details to show</p>
+      <section className="details">
+        <h2>{selectedEpisode.title}</h2>
+        <p>{selectedEpisode.description}</p>
       </section>
     );
   }
- return (
-  <section className="details">
-    <h2>{selectedEpisode.title}</h2>
-    <p>{selectedEpisode.description}</p>
-  </section>
- );
-}
 
-return (
-  <>
-  <header>
-    <h1>Dark Echoes</h1>
-  </header>
-  <main>
-    <EpisodeList />
-    <EpisodeDetails />
-  </main>
-  </>
-);
+  return (
+    <>
+      <header>
+        <h1>Dark Echoes</h1>
+      </header>
+      <main>
+        <EpisodeList />
+        <EpisodeDetails />
+      </main>
+    </>
+  );
 }
